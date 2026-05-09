@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skills — Ridwan Akinfenwa, MBA</title>
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    .skills-domain { margin-bottom: 4rem; }
+    .domain-header {
+      display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;
+      padding-bottom: 1rem; border-bottom: 1px solid var(--border);
+    }
+    .domain-icon { width:40px; height:40px; color:var(--accent); }
+    .domain-icon svg { width:100%; height:100%; }
+    .domain-title { font-family:var(--font-display); font-size:1.3rem; font-weight:700; }
+    .domain-count { font-family:var(--font-mono); font-size:0.72rem; color:var(--text-dim); margin-left:auto; }
+    .tech-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(120px, 1fr)); gap:0.75rem; margin-bottom:2rem; }
+    .tech-badge {
+      padding:0.65rem 1rem; background:var(--surface); border:1px solid var(--border); border-radius:8px;
+      font-family:var(--font-mono); font-size:0.75rem; color:var(--text-muted); text-align:center;
+      transition:all 0.3s; white-space:nowrap;
+    }
+    .tech-badge:hover { border-color:var(--accent); color:var(--accent); background:var(--accent-glow); }
+    .skills-layout { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
+    @media(max-width:768px) { .skills-layout { grid-template-columns:1fr; gap:3rem; } }
+    .cert-list { margin: 0; padding-left: 1.15rem; color: var(--text-muted); line-height: 1.72; font-size: 0.88rem; }
+    .cert-list li { margin-bottom: 0.4rem; }
+    .skills-lede { color: var(--text-muted); line-height: 1.75; max-width: 52rem; margin-bottom: 2.5rem; }
+  </style>
+</head>
+<body>
+<div class="noise"></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+
+<nav class="nav scrolled" id="nav">
+  <div class="nav-logo"><a href="../index.html"><span class="logo-bracket">[</span>RA<span class="logo-bracket">]</span></a></div>
+  <ul class="nav-links">
+    <li><a href="../index.html" class="nav-link" data-page="home">Home</a></li>
+    <li><a href="about.html" class="nav-link" data-page="about">About</a></li>
+    <li><a href="projects.html" class="nav-link" data-page="projects">Projects</a></li>
+    <li><a href="skills.html" class="nav-link" data-page="skills">Skills</a></li>
+    <li><a href="certifications.html" class="nav-link" data-page="certifications">Certifications</a></li>
+    <li><a href="contact.html" class="nav-link cta-link" data-page="contact">Contact</a></li>
+  </ul>
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</div>
+
+<div class="page-hero">
+  <div class="container">
+    <p class="page-hero-tag reveal-up">Ridwan Akinfenwa, MBA</p>
+    <h1 class="page-hero-title reveal-up delay-1">Skills &<br /><span style="color:var(--accent)">Tools</span></h1>
+  </div>
+</div>
+
+<section class="page-section">
+  <div class="container">
+    <p class="skills-lede reveal-up"><span class="cv-strong">Software Engineer</span> with an <span class="cv-highlight">MBA in Artificial Intelligence</span> and deep practice in <span class="cv-highlight">smart contract security</span>, <span class="cv-highlight">EMR / healthcare engineering</span>, <span class="cv-highlight">DeFi</span>, and <span class="cv-highlight">GIS / forestry analytics</span> (ArcGIS, QGIS, Google Earth Engine). Below is the stack I ship with every week — aligned to LinkedIn &amp; résumé.</p>
+    <div class="skills-layout">
+
+      <!-- Left: Skill bars -->
+      <div>
+        <div class="section-header reveal-up">
+          <span class="section-tag">Proficiency</span>
+          <h2 class="section-title">Core Skills</h2>
+        </div>
+        <p class="reveal-up delay-1" style="color:var(--text-dim); font-size:0.88rem; line-height:1.65; max-width:36rem; margin:-0.75rem 0 1.75rem 0;">Bars show <span class="cv-strong">relative depth</span>, not exam scores — heaviest daily load in <span class="cv-highlight">full-stack (React/Node/Laravel)</span>, <span class="cv-highlight">Solidity security</span>, and <span class="cv-highlight">LLM / data pipelines</span>.</p>
+
+        <div class="reveal-up delay-2">
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-header">
+              <span class="skill-bar-label">Web Development (HTML/CSS/JS)</span>
+              <span class="skill-bar-pct">92%</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-header">
+              <span class="skill-bar-label">PHP / Laravel</span>
+              <span class="skill-bar-pct">85%</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-header">
+              <span class="skill-bar-label">WordPress / CMS</span>
+              <span class="skill-bar-pct">90%</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-header">
+              <span class="skill-bar-label">Smart Contracts / Solidity</span>
+              <span class="skill-bar-pct">80%</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-header">
+              <span class="skill-bar-label">Blockchain Security Research</span>
+              <span class="skill-bar-pct">82%</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-header">
+              <span class="skill-bar-label">AI / ML & LLM Integration</span>
+              <span class="skill-bar-pct">80%</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-header">
+              <span class="skill-bar-label">GIS & Spatial Analysis</span>
+              <span class="skill-bar-pct">72%</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="72"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-header">
+              <span class="skill-bar-label">Security Research / Pen Testing</span>
+              <span class="skill-bar-pct">75%</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Tech domains -->
+      <div>
+        <div class="section-header reveal-up">
+          <span class="section-tag">Tech Stack</span>
+          <h2 class="section-title">Technologies</h2>
+        </div>
+
+        <div class="skills-domain reveal-up delay-1">
+          <div class="domain-header">
+            <div class="domain-icon">
+              <svg viewBox="0 0 40 40" fill="none"><rect x="4" y="8" width="32" height="24" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M13 16l-4 4 4 4M27 16l4 4-4 4M21 12l-2 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <span class="domain-title">Web Development</span>
+            <span class="domain-count">11 technologies</span>
+          </div>
+          <div class="tech-grid">
+            <span class="tech-badge">HTML5</span>
+            <span class="tech-badge">CSS3</span>
+            <span class="tech-badge">JavaScript</span>
+            <span class="tech-badge">Python</span>
+            <span class="tech-badge">Django</span>
+            <span class="tech-badge">TypeScript</span>
+            <span class="tech-badge">React</span>
+            <span class="tech-badge">PHP</span>
+            <span class="tech-badge">Laravel</span>
+            <span class="tech-badge">Node.js</span>
+            <span class="tech-badge">MySQL</span>
+            <span class="tech-badge">WordPress</span>
+            <span class="tech-badge">REST APIs</span>
+          </div>
+        </div>
+
+        <div class="skills-domain reveal-up delay-2">
+          <div class="domain-header">
+            <div class="domain-icon">
+              <svg viewBox="0 0 40 40" fill="none"><path d="M20 4L4 12v8c0 8 6.4 15.2 16 18 9.6-2.8 16-10 16-18V12L20 4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="domain-title">Blockchain / Web3</span>
+            <span class="domain-count">10 technologies</span>
+          </div>
+          <div class="tech-grid">
+            <span class="tech-badge">Solidity</span>
+            <span class="tech-badge">Hardhat</span>
+            <span class="tech-badge">Foundry</span>
+            <span class="tech-badge">Web3.js</span>
+            <span class="tech-badge">Ethers.js</span>
+            <span class="tech-badge">MetaMask</span>
+            <span class="tech-badge">OpenZeppelin</span>
+            <span class="tech-badge">Smart Chain</span>
+            <span class="tech-badge">DAPP</span>
+            <span class="tech-badge">DeFi</span>
+          </div>
+        </div>
+
+        <div class="skills-domain reveal-up delay-3">
+          <div class="domain-header">
+            <div class="domain-icon">
+              <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="12" stroke="currentColor" stroke-width="1.5"/><path d="M20 14v6l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <span class="domain-title">Tools & Platforms</span>
+            <span class="domain-count">15 technologies</span>
+          </div>
+          <div class="tech-grid">
+            <span class="tech-badge">Git / GitHub</span>
+            <span class="tech-badge">Docker</span>
+            <span class="tech-badge">AWS</span>
+            <span class="tech-badge">Azure</span>
+            <span class="tech-badge">TensorFlow</span>
+            <span class="tech-badge">PyTorch</span>
+            <span class="tech-badge">OpenAI API</span>
+            <span class="tech-badge">n8n</span>
+            <span class="tech-badge">Supabase</span>
+            <span class="tech-badge">PostgreSQL</span>
+            <span class="tech-badge">Redis</span>
+            <span class="tech-badge">Linux</span>
+            <span class="tech-badge">QGIS</span>
+            <span class="tech-badge">ArcGIS</span>
+            <span class="tech-badge">Postman</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Certifications / Education -->
+<section class="page-section alt">
+  <div class="container">
+    <div class="section-header reveal-up">
+      <span class="section-tag">Credentials</span>
+      <h2 class="section-title">Education &amp; Training</h2>
+      <p style="margin-top:0.85rem; margin-bottom:0;">
+        <a href="certifications.html" class="cert-gallery-link">View certificate PDFs →</a>
+      </p>
+    </div>
+    <div class="three-col">
+      <div class="service-card reveal-up delay-1" style="border-radius:var(--radius-lg);">
+        <div class="service-icon">
+          <svg viewBox="0 0 40 40" fill="none"><path d="M4 16l16-8 16 8-16 8L4 16z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M36 16v10M10 20v8c0 2 4.5 4 10 4s10-2 10-4v-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>MBA — Artificial Intelligence</h3>
+        <p><span class="cv-strong">Nexford University</span> (Washington, DC). Focus: <span class="cv-highlight">AI strategy</span>, product growth, translating technical depth into <span class="cv-highlight">ROI-driven roadmaps</span> for SaaS, fintech, and regulated healthcare.</p>
+        <div class="service-tags"><span>AI Strategy</span><span>Leadership</span><span>Cybersecurity Leadership</span></div>
+      </div>
+      <div class="service-card reveal-up delay-2" style="border-radius:var(--radius-lg);">
+        <div class="service-icon">
+          <svg viewBox="0 0 40 40" fill="none"><path d="M4 16l16-8 16 8-16 8L4 16z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M36 16v10M10 20v8c0 2 4.5 4 10 4s10-2 10-4v-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>B.Tech — FUTA</h3>
+        <p><span class="cv-strong">Federal University of Technology, Akure</span> — <span class="cv-highlight">Forestry &amp; Wood Technology</span> (2017–2021). GIS / remote sensing research, space applications lab exposure, and <span class="cv-highlight">Volest</span> mobile forestry innovation.</p>
+        <div class="service-tags"><span>Forestry</span><span>GIS</span><span>Research</span></div>
+      </div>
+      <div class="service-card reveal-up delay-3" style="border-radius:var(--radius-lg);">
+        <div class="service-icon">
+          <svg viewBox="0 0 40 40" fill="none"><rect x="8" y="6" width="24" height="28" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M14 14h12M14 20h12M14 26h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Licenses &amp; Certifications</h3>
+        <ul class="cert-list">
+          <li><span class="cv-highlight">CompTIA Security+</span> — <span class="cv-strong">in view</span> (2026)</li>
+          <li><span class="cv-strong">Nexford</span> — Cybersecurity Leadership (Oct 2024) · Advanced Business Foundations (Jun 2024)</li>
+          <li><span class="cv-strong">LinkedIn Learning</span> — AI in Business Essential Training (Jun 2024)</li>
+          <li><span class="cv-strong">Finrik</span> — DeFi Development &amp; Management (2024)</li>
+          <li><span class="cv-strong">FAO</span> — Measurement, Reporting &amp; Verification for environmental integrity (2024)</li>
+          <li><span class="cv-strong">NYSC</span> — National Youth Service Corps (2024)</li>
+          <li><span class="cv-strong">Simplilearn</span> — Project Management · PMP basics (2022)</li>
+          <li><span class="cv-strong">Udemy</span> — Solidity zero-to-expert · Ethereum dev bootcamp · NFT web dev (2022)</li>
+          <li><span class="cv-strong">Google</span> — Digital Skills for Africa (2020)</li>
+          <li><span class="cv-highlight">Grade 1 Nigeria Football Referee</span> — NRA/NFF (2017)</li>
+        </ul>
+        <div class="service-tags"><span>Security+</span><span>MBA Certs</span><span>NYSC</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><span class="logo-bracket">[</span>RA<span class="logo-bracket">]</span></div>
+        <p>Ridwan Akinfenwa, MBA · Software Engineer · AI · CyberSecurity </p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul><li><a href="../index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="projects.html">Projects</a></li><li><a href="skills.html">Skills</a></li><li><a href="certifications.html">Certifications</a></li></ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul><li><a href="https://github.com/Dar-Sub" target="_blank">GitHub</a></li><li><a href="https://www.linkedin.com/in/ridwan-akinfenwa/" target="_blank">LinkedIn</a></li><li><a href="https://www.darrelltechs.com/" target="_blank">Darrell Techs</a></li><li><a href="contact.html">Contact</a></li></ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Ridwan Akinfenwa. All rights reserved.</span>
+      <span class="footer-tag">Built with precision</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

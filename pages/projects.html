@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Ridwan Akinfenwa, MBA</title>
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    .filter-bar { display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:3rem; }
+    .filter-btn {
+      font-family:var(--font-mono); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em;
+      padding:0.5rem 1.2rem; border-radius:100px; border:1px solid var(--border); background:transparent;
+      color:var(--text-muted); cursor:none; transition:all 0.3s;
+    }
+    .filter-btn.active, .filter-btn:hover { border-color:var(--accent); color:var(--accent); background:var(--accent-glow); }
+    .projects-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    @media(max-width:900px) { .projects-grid { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:600px) { .projects-grid { grid-template-columns:1fr; } }
+    .project-card[data-hidden="true"] { display:none; }
+  </style>
+</head>
+<body>
+<div class="noise"></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+
+<nav class="nav scrolled" id="nav">
+  <div class="nav-logo"><a href="../index.html"><span class="logo-bracket">[</span>RA<span class="logo-bracket">]</span></a></div>
+  <ul class="nav-links">
+    <li><a href="../index.html" class="nav-link" data-page="home">Home</a></li>
+    <li><a href="about.html" class="nav-link" data-page="about">About</a></li>
+    <li><a href="projects.html" class="nav-link" data-page="projects">Projects</a></li>
+    <li><a href="skills.html" class="nav-link" data-page="skills">Skills</a></li>
+    <li><a href="certifications.html" class="nav-link" data-page="certifications">Certifications</a></li>
+    <li><a href="contact.html" class="nav-link cta-link" data-page="contact">Contact</a></li>
+  </ul>
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="certifications.html">Certifications</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</div>
+
+<div class="page-hero">
+  <div class="container">
+    <p class="page-hero-tag reveal-up">Ridwan Akinfenwa, MBA</p>
+    <h1 class="page-hero-title reveal-up delay-1">Projects &<br /><span style="color:var(--accent)">Builds</span></h1>
+  </div>
+</div>
+
+<section class="page-section">
+  <div class="container">
+    <p class="reveal-up" style="color:var(--text-muted); line-height:1.8; max-width:48rem; margin-bottom:2.5rem;">Highlights mirror my <span class="cv-strong">LinkedIn</span> and <span class="cv-strong">résumé</span>: <span class="cv-highlight">insurance SaaS</span>, <span class="cv-highlight">healthcare AI</span>, <span class="cv-highlight">US enterprise full-stack</span>, <span class="cv-highlight">50+ audits</span>, <span class="cv-highlight">DeFi TVL</span>, and <span class="cv-highlight">forestry GIS</span> research.</p>
+    <!-- Filters -->
+    <div class="filter-bar reveal-up">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="blockchain">Blockchain</button>
+      <button class="filter-btn" data-filter="web">Web Dev</button>
+      <button class="filter-btn" data-filter="security">Security</button>
+      <button class="filter-btn" data-filter="gis">GIS</button>
+    </div>
+
+    <div class="projects-grid" id="projectsGrid">
+
+      <div class="project-card reveal-up delay-1" data-category="web">
+        <div class="project-card-head">
+          <span class="project-type">SaaS · Insurance · London</span>
+          <a href="#" class="project-link-icon" aria-label="External link">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H7M12 4v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <h3>Verixar — Insurance Verification</h3>
+        <p><span class="cv-strong">Founding Engineer</span>: multi-tenant SaaS, <span class="cv-highlight">React + Django REST</span>, RBAC, fraud-detection pipelines, <span class="cv-highlight">JWT · OAuth</span>, ingestion workers, <span class="cv-highlight">PostgreSQL · Redis · Celery</span>, OpenAPI contracts.</p>
+        <div class="project-stack">
+          <span>React</span><span>Django</span><span>PostgreSQL</span><span>Redis</span><span>RBAC</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal-up delay-2" data-category="web">
+        <div class="project-card-head">
+          <span class="project-type">Web · CMS</span>
+          <a href="https://www.darrelltechs.com/" target="_blank" class="project-link-icon" aria-label="External link">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H7M12 4v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <h3>Darrell Technologies</h3>
+        <p>Corporate site for my <span class="cv-strong">Nigeria-based studio</span> — services, portfolio, and testimonials. WordPress + PHP stack tuned for <span class="cv-highlight">SEO, performance, and CMS workflows</span> for regional clients.</p>
+        <div class="project-stack">
+          <span>WordPress</span><span>PHP</span><span>HTML/CSS</span><span>JavaScript</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal-up delay-3" data-category="web">
+        <div class="project-card-head">
+          <span class="project-type">Healthcare · AI · HIPAA</span>
+          <a href="#" class="project-link-icon" aria-label="External link">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H7M12 4v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <h3>Therapi AI</h3>
+        <p><span class="cv-strong">AI Engineer</span> on a mental-health agent: <span class="cv-highlight">+40% NLP accuracy</span> via deep-learning pipelines, <span class="cv-highlight">HIPAA/GDPR-aware</span> architecture, LLM + sentiment stack, <span class="cv-highlight">Python · TensorFlow · PyTorch · OpenAI APIs</span> — measurable retention lift.</p>
+        <div class="project-stack">
+          <span>Python</span><span>TensorFlow</span><span>PyTorch</span><span>OpenAI</span><span>NLP</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal-up delay-1" data-category="blockchain">
+        <div class="project-card-head">
+          <span class="project-type">Web3 · DAPP</span>
+          <a href="#" class="project-link-icon" aria-label="External link">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H7M12 4v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <h3>DeFi Lending Protocol (dFund)</h3>
+        <p><span class="cv-strong">Senior blockchain engineer (UK)</span>: Ethereum lending/borrowing + <span class="cv-highlight">credit scoring</span>, <span class="cv-highlight">$1M+ TVL</span>, <span class="cv-highlight">30% gas savings</span> via optimisation, <span class="cv-highlight">zero production security incidents</span>, Solidity + Web3.js dApps.</p>
+        <div class="project-stack">
+          <span>Solidity</span><span>Web3.js</span><span>Hardhat</span><span>OpenZeppelin</span><span>DeFi</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal-up delay-2" data-category="gis">
+        <div class="project-card-head">
+          <span class="project-type">Mobile · Forestry · GIS</span>
+          <a href="#" class="project-link-icon" aria-label="External link">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H7M12 4v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <h3>Volest — Tree Volume Estimation</h3>
+        <p><span class="cv-strong">Final-year project (FUTA)</span> — mobile app (Volest) using <span class="cv-highlight">DBH, DST, DT, DB, DM &amp; derived models</span>; defended May&nbsp;2023; <span class="cv-highlight">FAN conference paper</span> (Akure 2022); press on FUTA forestry innovation — <span class="cv-highlight">first-of-kind in Africa</span> positioning per defence materials.</p>
+        <div class="project-stack">
+          <span>Mobile</span><span>GIS</span><span>Forestry</span><span>Python</span><span>Research</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal-up delay-3" data-category="web">
+        <div class="project-card-head">
+          <span class="project-type">Web · Healthcare</span>
+          <a href="#" class="project-link-icon" aria-label="External link">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H7M12 4v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <h3>Healthcare EMR (Tech Dynasty / ProsperaHealth)</h3>
+        <p><span class="cv-strong">Senior software engineer</span> (Towson, MD): secure <span class="cv-highlight">EMR platform</span> contributing to <span class="cv-highlight">~$500K valuation narrative</span>, <span class="cv-highlight">~40% engagement lift</span> on marketing surfaces, <span class="cv-highlight">~20% perf/reliability</span> gains — <span class="cv-highlight">Node.js · React · PostgreSQL</span> + accessibility/security compliance.</p>
+        <div class="project-stack">
+          <span>Node.js</span><span>React</span><span>PostgreSQL</span><span>REST APIs</span><span>EMR</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal-up delay-1" data-category="security">
+        <div class="project-card-head">
+          <span class="project-type">Security · SmartHub</span>
+          <a href="#" class="project-link-icon" aria-label="External link">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H7M12 4v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <h3>Lead Smart Contract Audits</h3>
+        <p><span class="cv-strong">SmartHub Innovations</span> — <span class="cv-highlight">50+ audits</span>, <span class="cv-highlight">$1M+</span> prevented-loss narrative, <span class="cv-highlight">automated audit framework (−40% manual time)</span>, OWASP/SWC-aligned reviews, <span class="cv-highlight">10-person research team</span> for DeFi protocols.</p>
+        <div class="project-stack">
+          <span>Solidity</span><span>Foundry</span><span>Hardhat</span><span>OWASP</span><span>SWC</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal-up delay-2" data-category="web">
+        <div class="project-card-head">
+          <span class="project-type">Full-Stack · Creative Repute</span>
+          <a href="https://www.linkedin.com/company/creativerepute" target="_blank" class="project-link-icon" aria-label="External link">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H7M12 4v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <h3>Creative Repute, Inc.</h3>
+        <p><span class="cv-strong">Full Stack Engineer</span> (US, remote): <span class="cv-highlight">SvelteKit + Laravel&nbsp;11</span>, Sanctum RBAC, <span class="cv-highlight">67 REST APIs</span>, <span class="cv-highlight">24 PostgreSQL models</span>, client dashboards, Google Calendar + Google API integrations.</p>
+        <div class="project-stack">
+          <span>SvelteKit</span><span>Laravel</span><span>PostgreSQL</span><span>Sanctum</span><span>REST</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal-up delay-3" data-category="web">
+        <div class="project-card-head">
+          <span class="project-type">AI · Stream Intelligence · Chile</span>
+          <a href="https://www.linkedin.com/company/mieladigital" target="_blank" class="project-link-icon" aria-label="External link">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H7M12 4v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <h3>Miela Digital — Streamer AI</h3>
+        <p><span class="cv-strong">Lead Full Stack AI Integrations</span>: <span class="cv-highlight">Python · OpenAI API · Supabase · PostgreSQL · React · Streamlit · Twitch API</span>; GPT fallback enrichment for bios/tags/regions — <span class="cv-highlight">85%+ metadata completeness</span>; pipelines for <span class="cv-highlight">10k+ streamer records</span>.</p>
+        <div class="project-stack">
+          <span>OpenAI</span><span>Supabase</span><span>PostgreSQL</span><span>Streamlit</span><span>Twitch API</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" style="padding-top:0;">
+  <div class="container">
+    <div class="cta-card reveal-up">
+      <div class="cta-glow"></div>
+      <div class="cta-text">
+        <span class="section-tag">Start a Project</span>
+        <h2>Have something<br/>you want to build?</h2>
+        <p>Need <span class="cv-highlight">HIPAA-aware AI</span>, <span class="cv-highlight">DeFi security</span>, <span class="cv-highlight">insurance SaaS</span>, or <span class="cv-highlight">GIS analytics</span>? I bring <span class="cv-strong">MBA-level clarity</span> and <span class="cv-strong">nearly 10 years</span> of shipping.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn btn-primary">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><span class="logo-bracket">[</span>RA<span class="logo-bracket">]</span></div>
+        <p>Ridwan Akinfenwa, MBA · Software Engineer · AI · Cybersecurity</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul><li><a href="../index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="projects.html">Projects</a></li><li><a href="skills.html">Skills</a></li><li><a href="certifications.html">Certifications</a></li></ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul><li><a href="https://github.com/Dar-Sub" target="_blank">GitHub</a></li><li><a href="https://www.linkedin.com/in/ridwan-akinfenwa/" target="_blank">LinkedIn</a></li><li><a href="https://www.darrelltechs.com/" target="_blank">Darrell Techs</a></li><li><a href="contact.html">Contact</a></li></ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Ridwan Akinfenwa. All rights reserved.</span>
+      <span class="footer-tag">Built with precision</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+  // Filter functionality
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
+      projectCards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        if (filter === 'all' || cat === filter) {
+          card.removeAttribute('data-hidden');
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>

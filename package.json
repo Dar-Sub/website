@@ -1,0 +1,37 @@
+{
+  "name": "ridwan-akinfenwa-portfolio",
+  "version": "1.0.0",
+  "description": "Professional portfolio website for Ridwan Akinfenwa — Snr. Software Engineer & Security Researcher",
+  "scripts": {
+    "start": "npx serve . -p 3000",
+    "build": "node scripts/build.js",
+    "build:prod": "NODE_ENV=production node scripts/build.js",
+    "minify:html": "node scripts/minify-html.js",
+    "minify:css": "cleancss -o dist/css/main.min.css css/main.css",
+    "minify:js": "terser js/main.js -o dist/js/main.min.js --compress --mangle",
+    "lint:js": "eslint js/*.js --fix || true",
+    "lint:css": "stylelint css/*.css || true",
+    "validate:html": "node scripts/validate-html.js",
+    "check:size": "node scripts/check-size.js",
+    "report": "node scripts/build-report.js",
+    "clean": "rimraf dist",
+    "preview": "npx serve dist -p 3001"
+  },
+  "devDependencies": {
+    "clean-css-cli": "^5.6.3",
+    "eslint": "^8.57.0",
+    "rimraf": "^5.0.5",
+    "stylelint": "^16.3.1",
+    "stylelint-config-standard": "^36.0.0",
+    "terser": "^5.30.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dar-Sub/website.git"
+  },
+  "author": "Ridwan Akinfenwa <ridwan@darrelltechs.com>",
+  "license": "MIT"
+}

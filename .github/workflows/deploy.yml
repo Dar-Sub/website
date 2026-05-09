@@ -1,0 +1,194 @@
+# ==============================================
+#  CI/CD Pipeline — Ridwan Akinfenwa Portfolio
+#  Target: GitHub Pages (static site deployment)
+# ==============================================
+
+name: Build & Deploy Portfolio
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+
+  # Allow manual trigger from GitHub Actions UI
+  workflow_dispatch:
+
+# Grant write permissions for GitHub Pages deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # ─────────────────────────────────────────
+  # JOB 1: Lint & Validate
+  # ─────────────────────────────────────────
+  lint-and-validate:
+    name: Lint & Validate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run HTML validation
+        run: npm run validate:html
+
+      - name: Run CSS linting
+        run: npm run lint:css
+
+      - name: Run JavaScript linting
+        run: npm run lint:js
+
+      - name: Check file sizes (performance budget)
+        run: npm run check:size
+
+  # ─────────────────────────────────────────
+  # JOB 2: Build
+  # ─────────────────────────────────────────
+  build:
+    name: Build & Optimize
+    runs-on: ubuntu-latest
+    needs: lint-and-validate
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run build pipeline
+        run: npm run build
+
+      - name: Minify HTML
+        run: npm run minify:html
+
+      - name: Minify CSS
+        run: npm run minify:css
+
+      - name: Minify JavaScript
+        run: npm run minify:js
+
+      - name: Generate build report
+        run: npm run report
+
+      - name: Upload build artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  # ─────────────────────────────────────────
+  # JOB 3: Security Scan
+  # ─────────────────────────────────────────
+  security-scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    needs: lint-and-validate
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run dependency audit
+        run: npm audit --audit-level=high
+
+      - name: Scan for secrets
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: ${{ github.event.repository.default_branch }}
+          extra_args: --only-verified
+
+  # ─────────────────────────────────────────
+  # JOB 4: Deploy (Production — main only)
+  # ─────────────────────────────────────────
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: [build, security-scan]
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Output deployment URL
+        run: |
+          echo "✅ Deployment successful!"
+          echo "🌐 Live URL: ${{ steps.deployment.outputs.page_url }}"
+
+      - name: Notify on success
+        if: success()
+        run: |
+          echo "::notice title=Deployment Success::Portfolio deployed at ${{ steps.deployment.outputs.page_url }}"
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "::error title=Deployment Failed::Check workflow logs for details."
+
+  # ─────────────────────────────────────────
+  # JOB 5: Post-Deploy Smoke Test
+  # ─────────────────────────────────────────
+  smoke-test:
+    name: Post-Deploy Smoke Test
+    runs-on: ubuntu-latest
+    needs: deploy
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install test dependencies
+        run: npm install -g lighthouse
+
+      - name: Run Lighthouse audit
+        run: |
+          lighthouse ${{ needs.deploy.outputs.page_url || 'https://dar-sub.github.io/portfolio' }} \
+            --output=json \
+            --output-path=./lighthouse-report.json \
+            --chrome-flags="--headless --no-sandbox" \
+            --only-categories=performance,accessibility,best-practices,seo || true
+
+      - name: Upload Lighthouse report
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-report
+          path: ./lighthouse-report.json
+          retention-days: 30
