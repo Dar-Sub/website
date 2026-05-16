@@ -1101,6 +1101,24 @@ a.cert-gallery-link:hover {
   opacity: 0.9;
 }
 
+/* Projects page — portfolio PDF spans full container width (matches project cards) */
+.portfolio-pdf-wrap {
+  width: 100%;
+  max-width: none;
+  margin-bottom: 2.5rem;
+}
+.cert-tile--portfolio-pdf .cert-frame {
+  aspect-ratio: 4 / 3;
+  min-height: 280px;
+  max-height: min(72vh, 720px);
+}
+@media (max-width: 600px) {
+  .cert-tile--portfolio-pdf .cert-frame {
+    min-height: 220px;
+    max-height: min(58vh, 520px);
+  }
+}
+
 /* Timeline (About page) */
 .timeline { position: relative; padding-left: 2rem; }
 .timeline::before {
